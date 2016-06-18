@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html >
+  <head>
+    <meta charset="UTF-8">
+    <title>Material Design Login Form</title>
+    
+    
+    
+    
+        <link rel="stylesheet" href="./style.css">
+
+    
+    
+    
+  </head>
+
+  <body>
+
+    <hgroup>
+  <h1>Scrapio-Scrape</h1>
+  <h3>By Abhinav</h3>
+</hgroup>
+<form>
+ <!-- <div class="group">
+    <input type="text"><span class="highlight"></span><span class="bar"></span>
+    <label>Name</label>
+  </div> -->
+  <div class="group">
+    <input type="url" id="address"><span class="highlight"></span><span class="bar"></span>
+    <label>URL</label>
+  </div>
+  <button type="button" class="button buttonBlue" onclick="getData()">fetch-data
+    <div class="ripples buttonRipples"><span class="ripplesCircle"></span></div>
+  </button>
+</form>
+<footer>
+  <p class="result">You Gotta Love this! </p>
+</footer>
+    <script src='http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
+
+        <script src="js/index.js"></script>
+
+    <script type="text/javascript">
+
+  function getData() {
+    $.post( "/scape", {
+     url : $("#address").val()  
+          })
+    .done(function( data ) {
+      if(data != null){
+        $('.result').empty();
+        $('.result').append("<li><b>number of follower are " + data.nFollower +'</b></li>\n');
+        for(var i = 0;i<data.nameOfCourse.length;i++)
+         $('.result').append('<li >'+data.nameOfCourse[i] +'    '+ data.nStudent[i]+' </li>'+'\n');
+
+     }
+     else{
+       $("#address").va()=data;
+     }  
+                      console.log(data);
+                    });
+  }
+
+              // <script src='js/jquery.min.js'></script>
+            </script>
+  
+    
+    
+  </body>
+</html>
